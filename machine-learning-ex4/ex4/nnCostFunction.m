@@ -80,7 +80,33 @@ J += lambda/(2 * m) * sum(sum(Theta2NoBias .* Theta2NoBias));
 %         Hint: We recommend implementing backpropagation using a for-loop
 %               over the training examples if you are implementing it for the 
 %               first time.
-%
+
+D1 = 0;
+D2 = 0;
+
+for t=1:m,
+	a_1 = X(t, :)';
+	a_1 = [1; a_1];
+
+	z_2 = Theta1 * a_1;
+	a_2 = sigmoid(z_2);
+	a_2 = [1; a_2];
+
+	z_3 = Theta2 * a_2;
+	a_3 = sigmoid(z_3);
+	d3 =  a_3 - Y(t,:)';
+	d2 = (Theta2NoBias' * d3) .* sigmoidGradient(z_2);
+	
+	D2 = D2 + d3 * a_2';
+	D1 = D1 + d2 * a_1';
+	
+end
+
+Theta1_grad = 1/m * D1;
+Theta2_grad = 1/m * D2;
+
+
+
 % Part 3: Implement regularization with the cost function and gradients.
 %
 %         Hint: You can implement this around the code for
