@@ -105,8 +105,6 @@ end
 Theta1_grad = 1/m * D1;
 Theta2_grad = 1/m * D2;
 
-
-
 % Part 3: Implement regularization with the cost function and gradients.
 %
 %         Hint: You can implement this around the code for
@@ -115,24 +113,8 @@ Theta2_grad = 1/m * D2;
 %               and Theta2_grad from Part 2.
 %
 
-% Theta1_grad = zeros(size(Theta1));
-% Theta2_grad = zeros(size(Theta2));
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+Theta1_grad(:, 2:end) += (lambda/m) * Theta1NoBias; 
+Theta2_grad(:, 2:end) += (lambda/m) * Theta2NoBias; 
 
 
 % -------------------------------------------------------------
