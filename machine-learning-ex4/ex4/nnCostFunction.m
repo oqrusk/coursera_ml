@@ -56,9 +56,9 @@ for i = 1:m,
 	Y(i, y(i)) = 1; % flg on 
 end;
 
-cost = (-1/m) * sum( Y .* log(hx) + (1-Y) .* log(1-hx));
+ 
+cost = (-1 / m) * sum((Y .* log(hx)) + ((1 - Y) .* log(1 - hx)), 2);
 J = sum(cost);
-
 
 Theta1NoBias = Theta1(:, 2:end);
 Theta2NoBias = Theta2(:, 2:end);
