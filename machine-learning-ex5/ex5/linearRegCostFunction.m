@@ -29,7 +29,10 @@ reg_theta = theta(2:end, 1);
 
 J = 1/(2*m) * (hx - y)' * (hx - y) + lambda/(2*m) * (reg_theta' * reg_theta);
 
+grad_theta = theta;
+grad_theta(1) = 0;
 
+grad = 1/m * X' * (hx-y) + (lambda/m) * grad_theta;
 % =========================================================================
 
 grad = grad(:);
