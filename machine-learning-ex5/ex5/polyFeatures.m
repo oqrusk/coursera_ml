@@ -20,7 +20,7 @@ for j=1:p
 end
 
 for i=1:size(X_poly,1)
-  X_poly(i, :) = X(i) .^ t'
+  X_poly(i, :) = X(i) .^ t';
 end
 
 
