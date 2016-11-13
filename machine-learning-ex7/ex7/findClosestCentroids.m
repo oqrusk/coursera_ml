@@ -24,20 +24,16 @@ idx = zeros(size(X,1), 1);
 % X = 300 * 2;
 % centroids = 3 * 2;
 % idx should be 300 * 1 vector
-min = intmax;
 
-idx = ones(size(X,1), 1);
+for i=1:size(X,1),
 
-for i=2:K,
-  Y = X - centroids(i,:)
-  W = X - centroids(i - 1,:)
-  Z = sum(Y.^2,2) - sum(W.^2,2);
-
-  for j=1,size(Z,1),
-    if Z(j,1) <= 0,
-      idx(j,1) = i;
-    end
+  for k=1:K,
+    Y(k) = sum((X(i,:) - centroids(k,:)) .^ 2, 2);
   end
+
+  [x, index] = min(Y);
+  idx(i) = index;
+
 end
 
 
