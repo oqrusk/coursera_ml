@@ -44,7 +44,7 @@ Theta_grad = zeros(size(Theta));
 % size(R); % 5 x 4
 % size(Y); % 5 x 4
 tmp = (X * Theta') - Y; % 5 x 4
-J = (1/2) * sum(sum((tmp .* R) .^2));
+J = (1/2) * sum(sum((tmp .* R) .^2)) + (lambda/2)*sum(sum(Theta.^2)) + (lambda/2)*sum(sum(X.^2));
 
 X_grad = (tmp .* R) * Theta;
 Theta_grad = (tmp .* R)' * X;
